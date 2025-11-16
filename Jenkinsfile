@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     environment {
-        IMAGE_NAME = 'Release Doc - Release 1.1'
+        IMAGE_NAME = 'release-doc-release-1.1'
         CONTAINER_NAME = 'Repositorio Doc - Release 1.1'
         PORT = '8085'
     }
@@ -32,7 +32,7 @@ pipeline {
                 script {
                     echo 'Construyendo imagen Docker para la presentación GYMETRA...'
                     echo 'IMPORTANTE: No se eliminarán imágenes existentes en Docker'
-                    bat "docker build -t \"%IMAGE_NAME%:latest\" ."
+                    bat "docker build -t %IMAGE_NAME%:latest ."
                 }
             }
         }
@@ -49,7 +49,7 @@ pipeline {
                             docker stop "%CONTAINER_NAME%"
                             docker rm "%CONTAINER_NAME%"
                         )
-                        docker run -d --name "%CONTAINER_NAME%" -p %PORT%:80 "%IMAGE_NAME%:latest"
+                        docker run -d --name "%CONTAINER_NAME%" -p %PORT%:80 %IMAGE_NAME%:latest
                     """
                 }
             }
