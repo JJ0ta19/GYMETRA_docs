@@ -2,8 +2,8 @@ pipeline {
     agent any
     
     environment {
-        IMAGE_NAME = 'gymetra-presentation'
-        CONTAINER_NAME = 'gymetra-presentation-container'
+        IMAGE_NAME = 'Release Doc - Release 1.1'
+        CONTAINER_NAME = 'Repositorio Doc - Release 1.1'
         PORT = '8085'
     }
     
