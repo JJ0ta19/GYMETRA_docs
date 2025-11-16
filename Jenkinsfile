@@ -44,12 +44,12 @@ pipeline {
                     echo 'IMPORTANTE: Si el contenedor ya existe, se omitirá la creación'
                     bat """
                         for /f %%i in ('docker ps -aq -f "name=%CONTAINER_NAME%"') do set CONTAINER_ID=%%i
-                        if not defined CONTAINER_ID (
-                            docker run -d --name %CONTAINER_NAME% -p %PORT%:80 %IMAGE_NAME%:latest
-                        ) else (
-                            echo El contenedor %CONTAINER_NAME% ya existe. No se creara uno nuevo.
-                            echo Si el contenedor esta detenido, puedes iniciarlo manualmente con: docker start %CONTAINER_NAME%
+                        if defined CONTAINER_ID (
+                            echo Deteniendo y eliminando contenedor existente %CONTAINER_NAME%
+                            docker stop %CONTAINER_NAME%
+                            docker rm %CONTAINER_NAME%
                         )
+                        docker run -d --name %CONTAINER_NAME% -p %PORT%:80 %IMAGE_NAME%:latest
                     """
                 }
             }
