@@ -14,7 +14,7 @@ pipeline {
                     echo 'Verificando si ya existe un contenedor con el mismo nombre...'
                     echo 'IMPORTANTE: No se eliminarán contenedores ni imágenes existentes en Docker'
                     bat '''
-                        for /f %%i in ('docker ps -aq -f name=%CONTAINER_NAME%') do set CONTAINER_ID=%%i
+                        for /f %%i in ('docker ps -aq -f "name=%CONTAINER_NAME%"') do set CONTAINER_ID=%%i
                         if defined CONTAINER_ID (
                             echo ADVERTENCIA: Ya existe un contenedor con el nombre %CONTAINER_NAME%
                             echo El pipeline continuara sin eliminar el contenedor existente
@@ -43,7 +43,7 @@ pipeline {
                     echo "Creando y ejecutando contenedor en el puerto %PORT%..."
                     echo 'IMPORTANTE: Si el contenedor ya existe, se omitirá la creación'
                     bat """
-                        for /f %%i in ('docker ps -aq -f name=%CONTAINER_NAME%') do set CONTAINER_ID=%%i
+                        for /f %%i in ('docker ps -aq -f "name=%CONTAINER_NAME%"') do set CONTAINER_ID=%%i
                         if not defined CONTAINER_ID (
                             docker run -d --name %CONTAINER_NAME% -p %PORT%:80 %IMAGE_NAME%:latest
                         ) else (
