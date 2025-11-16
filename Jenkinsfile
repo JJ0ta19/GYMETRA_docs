@@ -61,7 +61,7 @@ pipeline {
                     echo 'Verificando que el contenedor esté ejecutándose...'
                     bat '''
                         C:/Windows/System32/ping.exe -n 4 127.0.0.1 > nul
-                        docker ps | C:/Windows/System32/find.exe "%CONTAINER_NAME%"
+                        docker ps
                         echo Contenedor %CONTAINER_NAME% ejecutandose en el puerto %PORT%
                         echo Accede a la presentacion en: http://localhost:%PORT%/index.html
                     '''
