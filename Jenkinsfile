@@ -4,7 +4,7 @@ pipeline {
     environment {
         IMAGE_NAME = 'gymetra-presentation'
         CONTAINER_NAME = 'gymetra-presentation-container'
-        PORT = '8080'
+        PORT = '8085'
     }
     
     stages {
@@ -60,8 +60,8 @@ pipeline {
                 script {
                     echo 'Verificando que el contenedor esté ejecutándose...'
                     bat '''
-                        timeout /t 3 /nobreak > nul
-                        docker ps | findstr %CONTAINER_NAME%
+                        ping -n 4 127.0.0.1 > nul
+                        docker ps | find "%CONTAINER_NAME%"
                         echo Contenedor %CONTAINER_NAME% ejecutandose en el puerto %PORT%
                         echo Accede a la presentacion en: http://localhost:%PORT%/index.html
                     '''
