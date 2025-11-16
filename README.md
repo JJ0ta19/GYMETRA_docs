@@ -86,7 +86,7 @@ GYMETRA-V1/
 ├── backend/
 │   ├── GYMETR-Membership/  # Servicio de Membresías (puerto 8081)
 │   ├── GYMETRA/            # Servicio base
-│   └── GYMETRA - Qr/       # Servicio de Control de Acceso (puerto 8090)
+│   └── GYMETRA - Qr/       # Servicio de Control de Acceso (puerto 8082)
 ├── frontend/
 │   ├── admin-frontend/     # Frontend Admin (puerto 8101)
 │   └── gymetra-frontend/   # Frontend Usuario (puerto 5173)
@@ -113,12 +113,12 @@ GYMETRA-V1/
 - `GET /api/access/history` - Historial de accesos
 
 ### Diagramas de Arquitectura
-- [Diagrama de Clases](doc/diagrams/class/class.puml)
-- [Diagrama de Despliegue](doc/diagrams/deploy/deploy.puml)
-- [Diagrama ER](doc/diagrams/er/er.puml)
-- [Diagrama de Paquetes](doc/diagrams/packeage/Packeage.puml)
-- [Diagrama de Secuencia](doc/diagrams/secuence/Secuence.puml)
-- [Diagrama de Casos de Uso](doc/diagrams/use_case/use_case.puml)
+- [Diagrama de Clases](doc/diagrams/class/class.png)
+- [Diagrama de Despliegue](doc/diagrams/deploy/deploy.png)
+- [Diagrama ER](doc/diagrams/er/er.png)
+- [Diagrama de Paquetes](doc/diagrams/packeage/Packeage.png)
+- [Diagrama de Secuencia](doc/diagrams/secuence/Secuence.png)
+- [Diagrama de Casos de Uso](doc/diagrams/use_case/use_case.png)
 
 ## 🔗 Enlaces
 
