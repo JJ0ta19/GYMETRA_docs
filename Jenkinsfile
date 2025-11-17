@@ -3,7 +3,7 @@ pipeline {
     
     environment {
         IMAGE_NAME = 'release-doc-release-1.1'
-        CONTAINER_NAME = 'Repositorio Doc - Release 1.1'
+        CONTAINER_NAME = 'repositorio-doc-release-1.1'
         PORT = '8085'
     }
     
@@ -16,11 +16,11 @@ pipeline {
                     bat '''
                         for /f %%i in ('docker ps -aq -f "name=%CONTAINER_NAME%"') do set CONTAINER_ID=%%i
                         if defined CONTAINER_ID (
-                            echo ADVERTENCIA: Ya existe un contenedor con el nombre "%CONTAINER_NAME%"
+                            echo ADVERTENCIA: Ya existe un contenedor con el nombre %CONTAINER_NAME%
                             echo El pipeline continuara sin eliminar el contenedor existente
                             echo Si necesitas crear uno nuevo, usa un nombre diferente o deten/elimina manualmente el contenedor existente
                         ) else (
-                            echo No existe un contenedor con el nombre "%CONTAINER_NAME%", se procedera a crear uno nuevo
+                            echo No existe un contenedor con el nombre %CONTAINER_NAME%, se procedera a crear uno nuevo
                         )
                     '''
                 }
@@ -45,11 +45,11 @@ pipeline {
                     bat """
                         for /f %%i in ('docker ps -aq -f "name=%CONTAINER_NAME%"') do set CONTAINER_ID=%%i
                         if defined CONTAINER_ID (
-                            echo Deteniendo y eliminando contenedor existente "%CONTAINER_NAME%"
-                            docker stop "%CONTAINER_NAME%"
-                            docker rm "%CONTAINER_NAME%"
+                            echo Deteniendo y eliminando contenedor existente %CONTAINER_NAME%
+                            docker stop %CONTAINER_NAME%
+                            docker rm %CONTAINER_NAME%
                         )
-                        docker run -d --name "%CONTAINER_NAME%" -p %PORT%:80 %IMAGE_NAME%:latest
+                        docker run -d --name %CONTAINER_NAME% -p %PORT%:80 %IMAGE_NAME%:latest
                     """
                 }
             }
